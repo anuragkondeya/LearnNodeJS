@@ -9,7 +9,7 @@ const jsonDataJson = JSON.parse(jsonDataFromFile);
 jsonDataJson.name = 'Anurag'
 jsonDataJson.age = 35
 
-fs.writeFileSync(fileName,JSON.stringify(jsonDataJson))
+fs.writeFileSync(fileName, JSON.stringify(jsonDataJson))
 console.log(chalk.green.inverse('Done'))
 
 
