@@ -20,7 +20,7 @@ yargs.command(
                 type: 'string'
             }
         },
-        handler: function (argv) {
+        handler(argv) {
             notes.addNote(argv.title, argv.body)
         }
     }
@@ -37,19 +37,19 @@ yargs.command(
                 type: 'string'
             }
         },
-        handler: function (argv) {
+        handler(argv) {
             notes.removeNote(argv.title)
         }
     }
 )
 yargs.command({
     command: '*',
-    handler: (argv) => {      
-      if (argv._[0]) {
-        console.log('Unknown commmand', argv._[0])        
-      }
+    handler: (argv) => {
+        if (argv._[0]) {
+            console.log('Unknown commmand', argv._[0])
+        }
     }
-  })
- .demand(1)
+})
+    .demand(1)
 //console.log(yargs.argv)
 yargs.parse() //parse is required for invoking yargs. In not present, the arguments won't be parsed
