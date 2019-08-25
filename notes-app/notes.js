@@ -21,7 +21,7 @@ const addNote = function (title, body) {
       body: body
     })
     saveNotes(notes)
-    console.log(chalk.green.inverse('Added'))
+    console.log(chalk.green.inverse('Added ' + title ))
 
   } else {
     console.log(chalk.red.inverse('Note title taken'))
@@ -43,7 +43,11 @@ const loadNotes = function () {
 }
 
 const removeNote = function (title) {
- console.log('Note removed')
+  const notes = loadNotes().filter(function (note) {
+    return note.title !== title
+  })
+  saveNotes(notes)
+  console.log(chalk.green.inverse('Removed ' + title ))
 }
 
 module.exports = {
