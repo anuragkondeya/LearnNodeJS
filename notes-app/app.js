@@ -42,11 +42,39 @@ yargs.command(
         }
     }
 )
+
+yargs.command(
+    {
+        command: 'read',
+        describe: 'Read a note',
+        builder: {
+            title: {
+                describe: 'Note title',
+                demandOption: true,
+                type: 'string'
+            }
+        },
+        handler(argv) {
+            notes.readNote(argv.title)
+        }
+    }
+)
+
+yargs.command(
+    {
+        command: 'listNotes',
+        describe: 'List all notes',
+        handler() {
+            notes.listNotes()
+        }
+    }
+)
+
 yargs.command({
     command: '*',
     handler: (argv) => {
         if (argv._[0]) {
-            console.log('Unknown commmand', argv._[0])
+            console.log(chalk.red.inverse('Unknown commmand', argv._[0]))
         }
     }
 })
