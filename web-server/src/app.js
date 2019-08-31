@@ -1,26 +1,32 @@
+const path = require('path')
 const express = require('express')
 const chalk = require('chalk')
 
 const app = express()
 
-app.get('', (reg, res) => {
-    res.send('<h1>Hello express!</h1>')
+const publicDirectoryPath = path.join(__dirname, '../public')
+
+app.set('view engine','hbs')
+app.use(express.static(publicDirectoryPath))
+
+app.get('',(req,res) =>{
+    res.render('index',{
+        title: 'Weather',
+        name: 'Anurag Kondeya' 
+    })
 })
 
-app.get('/help', (reg, res) => {
-    res.send([{
-        name: 'Anurag',
-        id: 22
-    },
-    {
-        name: 'Kondeya',
-        id: 23
-    }
-    ])
+app.get('/about',(req,res) =>{
+    res.render('about',{
+        title: 'Weather',
+        name: 'Anurag Kondeya' 
+    })
 })
 
-app.get('/about', (req, res) => {
-    res.send('<h1>about!</h1>')
+app.get('/help',(req,res) =>{
+    res.render('help',{
+        message: 'Help will always be given at Hogwarts to those who ask for it.'
+    })
 })
 
 app.get('/weather', (req, res) => {

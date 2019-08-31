@@ -1,0 +1,1 @@
+console.log('clinet side java script is loaded')
