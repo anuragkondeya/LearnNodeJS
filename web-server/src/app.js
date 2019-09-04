@@ -50,6 +50,23 @@ app.get('/weather', (req, res) => {
     })
 })
 
+app.get('/help/*',(req,res) =>{
+    res.render('404',{
+        title: 'Help page not found',
+        message: 'The help page you are looking for is not available.',
+        name: 'Anurag Kondeya' 
+    })
+})
+
+
+app.get('*', (req, res) => {
+    res.render('help',{
+        title: ' Page not found',
+        message: 'Page you are looking for is not available.',
+        name: 'Anurag Kondeya' 
+    })
+})
+
 app.listen(3000, () => {
     console.log(chalk.green.inverse('Server is running'))
 })
