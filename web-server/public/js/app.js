@@ -16,14 +16,12 @@ const fetchWeatherData = (url) => {
     })
 }
 
-
-
 weatherForm.addEventListener('submit', (e) => {
     e.preventDefault()
     message1.textContent = "Searching..."
     message2.textContent = ""
     const location = search.value
-    const url = "http://localhost:3000/weather?address=" + location
+    const url = "/weather?address=" + location
     fetchWeatherData(url)
 
 })
