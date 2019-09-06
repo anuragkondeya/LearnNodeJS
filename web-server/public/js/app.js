@@ -16,6 +16,8 @@ const fetchWeatherData = (url) => {
     })
 }
 
+
+
 weatherForm.addEventListener('submit', (e) => {
     e.preventDefault()
     message1.textContent = "Searching..."
