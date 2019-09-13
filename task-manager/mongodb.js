@@ -52,22 +52,47 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     // })
 
 
-    db.collection('tasks').findOne({ completed: false }, (error, task) => {
-        if (error) {
-            return console.log("Error")
-        }
-        //console.log("Task " + task.desciption)
+    // db.collection('tasks').findOne({ completed: false }, (error, task) => {
+    //     if (error) {
+    //         return console.log("Error")
+    //     }
+    //     //console.log("Task " + task.desciption)
 
+    // })
+
+    // db.collection('tasks').find({ completed: true }).toArray((error, tasks) => { //Find returns a cursor and hence toArray
+    //     if (error) {
+    //         return console.log("Error")
+    //     }
+    //     tasks.forEach((task) => {
+    //         console.log(task)
+    //         console.log(task.desciption)
+    //     });
+
+    // })
+
+    db.collection('tasks').updateOne({
+        _id: new ObjectID('5d741e3b5b6f928eb2889619')
+    }, {
+        $set: {
+            desciption: 'Task 44'
+        }
+    }).then((result) => {
+        console.log('Success')
+    }).catch((error) => {
+        console.log('error')
     })
 
-    db.collection('tasks').find({ completed: true }).toArray((error, tasks) => { //Find returns a cursor and hence toArray
-        if (error) {
-            return console.log("Error")
+    db.collection('tasks').updateMany({
+        completed: false
+    }, {
+        $set: {
+            desciption: 'Task 44'
         }
-        tasks.forEach((task) => {
-            console.log(task)
-            console.log(task.desciption)
-        });
-
+    }).then((result) => {
+        console.log('Success')
+        console.log(result.modifiedCount)
+    }).catch((error) => {
+        console.log('error')
     })
 })
