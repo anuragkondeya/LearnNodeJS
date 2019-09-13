@@ -71,27 +71,36 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 
     // })
 
-    db.collection('tasks').updateOne({
-        _id: new ObjectID('5d741e3b5b6f928eb2889619')
-    }, {
-        $set: {
-            desciption: 'Task 44'
-        }
-    }).then((result) => {
-        console.log('Success')
-    }).catch((error) => {
-        console.log('error')
-    })
+    // db.collection('tasks').updateOne({
+    //     _id: new ObjectID('5d741e3b5b6f928eb2889619')
+    // }, {
+    //     $set: {
+    //         desciption: 'Task 44'
+    //     }
+    // }).then((result) => {
+    //     console.log('Success')
+    // }).catch((error) => {
+    //     console.log('error')
+    // })
 
-    db.collection('tasks').updateMany({
-        completed: false
-    }, {
-        $set: {
-            desciption: 'Task 44'
-        }
+    // db.collection('tasks').updateMany({
+    //     completed: false
+    // }, {
+    //     $set: {
+    //         desciption: 'Task 44'
+    //     }
+    // }).then((result) => {
+    //     console.log('Success')
+    //     console.log(result.modifiedCount)
+    // }).catch((error) => {
+    //     console.log('error')
+    // })
+
+
+    db.collection('tasks').deleteMany({
+        completed: true
     }).then((result) => {
         console.log('Success')
-        console.log(result.modifiedCount)
     }).catch((error) => {
         console.log('error')
     })
