@@ -1,6 +1,7 @@
 // const mongodb = require('mongodb')
 // const MongoClient = mongodb.MongoClient
 const { MongoClient, ObjectID } = require('mongodb')
+var validator = require('validator');
 
 const id = new ObjectID()
 
@@ -15,10 +16,10 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 
     const db = client.db(databaseName)
 
-    // db.collection('users').insertOne({
-    //     name: 'Anurag',
-    //     age: 34
-    // })
+    db.collection('users').insertOne({
+        name: 'Anurag',
+        age: 34
+    })
 
 
     // db.collection('users').insertOne({
@@ -97,11 +98,11 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     // })
 
 
-    db.collection('tasks').deleteMany({
-        completed: true
-    }).then((result) => {
-        console.log('Success')
-    }).catch((error) => {
-        console.log('error')
-    })
+    // db.collection('tasks').deleteMany({
+    //     completed: true
+    // }).then((result) => {
+    //     console.log('Success')
+    // }).catch((error) => {
+    //     console.log('error')
+    // })
 })
